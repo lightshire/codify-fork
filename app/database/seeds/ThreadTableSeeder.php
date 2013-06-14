@@ -3,7 +3,7 @@
 class ThreadTableSeeder extends Seeder{
 
 	public function run(){
-
+		DB::table('threads')->delete();
 		$category = array(
 				'PHP',
 				'Javascript',
@@ -46,7 +46,7 @@ class ThreadTableSeeder extends Seeder{
 
 
 			$thread->title = $value['title'];
-			$thread->slug = $value['title'];
+			$thread->slug = Str::slug($value['title']);
 			$thread->category = $category->id;
 			$thread->save();
 		}
